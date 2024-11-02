@@ -21,7 +21,7 @@
   </mat-tree-node>
 
   <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding>
-    <button
+    <div
       mat-icon-button
       matTreeNodeToggle
       [attr.aria-label]="'toggle ' + node.name"
@@ -30,7 +30,7 @@
       <mat-icon class="mat-icon-rtl-mirror">
         {{ treeControl.isExpanded(node) ? "folder_open" : "folder" }}
       </mat-icon>
-    </button>
+    </div>
 
     <ng-container *ngIf="node.isEditing; else displayName">
       <form [formGroup]="editForm" (ngSubmit)="saveName(node)">

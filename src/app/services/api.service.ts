@@ -1,12 +1,14 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import { environment } from "../../environments/environment";
 @Injectable({
   providedIn: "root",
 })
 export class ApiService {
-  baseUrl :string = 'http://localhost:4000/'
-  constructor(private http:HttpClient) {}
-
+  baseUrl :string = environment.BASE_URL ?? ""
+  constructor(private http:HttpClient) {
+    console.log({baseUrl: this.baseUrl})
+  }
   createRootFolder(){
     return this.http.get(`${this.baseUrl}folder/rootFolder`)
   }

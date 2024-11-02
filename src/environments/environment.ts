@@ -1,3 +1,3 @@
 export const environment = {
-    BASE_URL: 'http://localhost:4000/'
+    BASE_URL: 'https://fstruct-backend.onrender.com/'
 };

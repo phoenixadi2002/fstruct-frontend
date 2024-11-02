@@ -30,4 +30,14 @@ export class ApiService {
     return this.http.post(`${this.baseUrl}folder/update/${data.id}`,{name:data.name})
 
   }
+  deleteFileNode(id:string){
+    const folderId = id
+    return this.http.post(`${this.baseUrl}file/delete/${folderId}`,{})
+
+  }
+  deleteFolderNode(id:string){
+    const folderId = id
+    return this.http.post(`${this.baseUrl}folder/delete/${folderId}`,{})
+
+  }
 }

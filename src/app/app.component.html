@@ -2,6 +2,22 @@
   <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding id="adfa">
     <mat-icon>insert_drive_file</mat-icon>
     {{ node.name }}
+    <div class="action-buttons">
+      <div class="icon-container" (click)="editName(node)">
+        <lucide-icon
+          [img]="createPencilIcon"
+          class="my-icon"
+          [size]="16"
+        ></lucide-icon>
+      </div>
+      <div class="icon-container" (click)="deleteFile(node)" >
+        <lucide-icon
+          [img]="createTrashIcon"
+          class="my-icon"
+          [size]="16"
+        ></lucide-icon>
+      </div>
+    </div>
   </mat-tree-node>
 
   <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding>
@@ -9,6 +25,7 @@
       mat-icon-button
       matTreeNodeToggle
       [attr.aria-label]="'toggle ' + node.name"
+      (click)="handleFolderClick(node, treeControl.isExpanded(node))"
     >
       <mat-icon class="mat-icon-rtl-mirror">
         {{ treeControl.isExpanded(node) ? "folder_open" : "folder" }}
@@ -47,7 +64,7 @@
             [size]="16"
           ></lucide-icon>
         </div>
-        <div class="icon-container" >
+        <div class="icon-container" (click)="deleteFolder(node)" >
           <lucide-icon
             [img]="createTrashIcon"
             class="my-icon"
